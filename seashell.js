@@ -3,7 +3,6 @@
 // - https://medium.com/web-audio/you-dont-need-that-scriptprocessor-61a836e28b42#.te1de1xc6
 
 var ctx = new AudioContext();
-var node = ctx.createBufferSource();
 var buffer = ctx.createBuffer(1, ctx.sampleRate, ctx.sampleRate);
 var data = buffer.getChannelData(0);
 
@@ -13,6 +12,7 @@ for (var i = 0; i < ctx.sampleRate; i++) {
   data[i] = last * 3.5;
 }
 
+var node = ctx.createBufferSource();
 node.buffer = buffer;
 node.loop = true;
 node.start();
